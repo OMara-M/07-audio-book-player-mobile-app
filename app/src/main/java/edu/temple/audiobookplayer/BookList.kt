@@ -1,20 +1,22 @@
 package edu.temple.audiobookplayer
 
-class BookList (private val _books:ArrayList<Book>){
+class BookList (){
+private val books = arrayListOf<Book>()
+
 
     fun add(book:Book): Unit {
-        _books.add(book)
+        books.add(book)
     }
 
     fun remove(book:Book): Unit{
-        _books.remove(book)
+        books.remove(book)
     }
 
     fun get(bookID: Int): Book {
-        return _books[bookID]
+        return books[bookID]
     }
 
     fun size(): Int {
-        return _books.size
+        return books.size
     }
 }
