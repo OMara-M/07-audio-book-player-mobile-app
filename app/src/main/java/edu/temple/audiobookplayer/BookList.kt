@@ -16,7 +16,6 @@ class BookList () : Parcelable{
         }
     }
 
-
     fun add(book:Book): Unit {
         books.add(book)
     }
@@ -25,7 +24,8 @@ class BookList () : Parcelable{
         books.remove(book)
     }
 
-    fun get(bookID: Int): Book {
+
+    operator fun get(bookID: Int): Book {
         return books[bookID]
     }
 
@@ -34,7 +34,9 @@ class BookList () : Parcelable{
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.writeParcelableList(books,flags)
+        }
     }
 
     override fun describeContents(): Int {
