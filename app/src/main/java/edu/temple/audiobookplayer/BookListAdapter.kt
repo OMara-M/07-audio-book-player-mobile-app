@@ -21,7 +21,11 @@ class BookListAdapter (_books: BookList, _onClick: (Book) -> Unit) : RecyclerVie
     }
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
-
+        holder.titleTextView.text = books[position].title
+        holder.authorTextView.text = books[position].author
+        holder.titleTextView.setOnClickListener {
+            onClick(books[position])
+        }
     }
 
     override fun getItemCount(): Int {

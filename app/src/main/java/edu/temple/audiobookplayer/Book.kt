@@ -3,7 +3,7 @@ package edu.temple.audiobookplayer
 import android.os.Parcel
 import android.os.Parcelable
 
-data class Book(val _author: String, val _title: String) : Parcelable {
+data class Book(val author: String, val title: String) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString()!!,
         parcel.readString()!!
@@ -11,8 +11,8 @@ data class Book(val _author: String, val _title: String) : Parcelable {
 
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(_author)
-        parcel.writeString(_title)
+        parcel.writeString(author)
+        parcel.writeString(title)
     }
 
     override fun describeContents(): Int {
