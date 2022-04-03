@@ -1,13 +1,19 @@
 package edu.temple.audiobookplayer
 
+import android.os.Build
 import android.os.Parcel
 import android.os.Parcelable
 
 class BookList () : Parcelable{
 
-private val books = <Book>()
+    private val books : MutableList<Book> by lazy {
+        ArrayList()
+    }
 
     constructor(parcel: Parcel) : this() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            parcel.readParcelableList(books,null)
+        }
     }
 
 
