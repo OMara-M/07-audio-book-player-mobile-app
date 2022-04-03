@@ -28,7 +28,14 @@ class BookDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        ViewModelProvider(requireActivity()).get(SelectedBookViewModel::class.java)
+        ViewModelProvider(requireActivity()).get(BookViewModel::class.java)
+            .getSelectedBook().observe(requireActivity()) {update(it)}
     }
 
+    private fun update(book: Book?) {
+        book?.run {
+            titleTextView. text = title
+            authorTextView. text = author
+        }
+    }
 }
