@@ -3,13 +3,26 @@ package edu.temple.audiobookplayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), BookListFragment.BookSelect {
+
+    private val isSingleContainer : Boolean by lazy {
+        findViewById<View>(R.id.container2) == null
+    }
+
+    private val BookViewModel : BookViewModel by lazy {
+        ViewModelProvider(this).get(BookViewModel::class.java)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         val books = createBookList()
+
 
 
     }
