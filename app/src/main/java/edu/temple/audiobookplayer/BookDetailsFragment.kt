@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 
 class BookDetailsFragment : Fragment() {
 
@@ -25,5 +26,9 @@ class BookDetailsFragment : Fragment() {
         return layout
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        ViewModelProvider(requireActivity()).get(SelectedBookViewModel::class.java)
+    }
 
 }
