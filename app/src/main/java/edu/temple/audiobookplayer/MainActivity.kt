@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 class MainActivity : AppCompatActivity(), BookListFragment.BookSelect {
 
     private val isSingleContainer : Boolean by lazy {
-        findViewById<View>(R.id.container2) == null
+        findViewById<View>(R.id.detailsFrag) == null
     }
 
     private val BookViewModel : BookViewModel by lazy {
@@ -23,7 +23,13 @@ class MainActivity : AppCompatActivity(), BookListFragment.BookSelect {
 
         val books = createBookList()
 
+        if (supportFragmentManager.findFragmentById(R.id.listFrag) is BookDetailsFragment) {
+            supportFragmentManager.popBackStack()
+        }
 
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().add(R.id.listFrag, BookListFragment.newInstance(books)).commit()
+        }
 
     }
 
